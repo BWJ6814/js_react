@@ -1,0 +1,97 @@
+/* src/App.css */
+
+/* 전체 배경 + 가운데 정렬 */
+.app {
+  min-height: 100vh;       /* 화면 전체 높이 */
+  display: flex;           /* flexbox로 정렬 */
+  flex-direction: column;  /* 세로 방향으로 배치 */
+  justify-content: center; /* 세로 가운데 정렬 */
+  align-items: center;     /* 가로 가운데 정렬 */
+  background-color: #f5f5f5; /* 연한 회색 배경 */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;            /* 기본 깔끔한 폰트 */
+}
+
+/* 제목 스타일 */
+.app h1 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: #333; /* 진한 회색 글씨 */
+}
+
+/* form 박스 */
+.form {
+  display: flex;
+  gap: 8px;              /* 자식 요소 사이 간격 */
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* label은 세로로 텍스트 + input 쌓이게 */
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #555;
+}
+
+/* input 스타일 */
+.input {
+  margin-top: 4px;
+  padding: 8px 12px;
+  min-width: 260px;
+  border: 1px solid #ccc;  /* 옅은 테두리 */
+  border-radius: 6px;      /* 모서리 둥글게 */
+  font-size: 14px;
+}
+
+/* 버튼 스타일 */
+.button {
+  padding: 9px 16px;
+  border: none;             /* 기본 테두리 제거 */
+  border-radius: 6px;
+  background-color: #4f46e5; /* 보라 계열 */
+  color: white;
+  font-size: 14px;
+  cursor: pointer;          /* 손가락 모양 커서 */
+  transition: transform 0.05s ease, opacity 0.1s ease; /* 애니메이션 */
+}
+
+/* 버튼 호버 효과 */
+.button:hover {
+  opacity: 0.9;             /* 살짝 투명하게 */
+}
+
+/* 버튼 클릭 효과 */
+.button:active {
+  transform: scale(0.97);   /* 살짝 눌리는 느낌 */
+}
+
+/* 결과 박스 */
+.result-box {
+  background-color: white;
+  padding: 16px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 그림자 살짝 */
+  min-width: 320px;
+}
+
+.result-box h2 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+/* 결과 텍스트 */
+.result-text {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* 아직 값이 없을 때 안내 문구 */
+.placeholder-text {
+  margin: 0;
+  font-size: 14px;
+  color: #888;
+  font-style: italic; /* 기울임 */
+}

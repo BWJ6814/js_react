@@ -1,0 +1,103 @@
+1.useEffect = "랜더링 이후에 실행되는 화면 밖(브라우저/서버)과 소통하는 공간"
+
+2. React가 jsx를 보고 -> 화면(DOM)을 그린 후 -> 브라우저에 보여준다음에! (한마디로 랜더링이 끝난 뒤)
+
+3. 화면에 영향을 주지 않는 "부가 작업"들을 여기서 처리..
+- console.log
+- 서버에서 데이터 가져오지 fetch , axios
+- setInterval, setTimeout
+- window.addEventListener 같은 이벤트 등록
+- 로컬스토리지 읽기/쓰기
+
+import { useEffect } from "react";
+
+useEffect(() => {
+  // 이 안이 "효과(effect)" 실행 영역
+});
+
+
+4. 의존성 배열 이해하기 (dependency array)
+
+useEffect(() => {
+  // 실행될 코드
+}, [의존성1, 의존성2, ...]);
+
+----------------------------------------------------------------
+4-1 의존성 배열이 없음
+useEffect(() => {
+  console.log("렌더링 될 때마다 실행!");
+});
+
+--> props나 state가 바뀌어 리렌더링 될 때마다 실행됨 (매 렌더링)
+
+------------------------------------------------------------------
+4-2 빈 배열 []
+useEffect(() => {
+  console.log("처음 마운트 될 때 딱 1번만 실행!");
+}, []);
+컴포넌트가 처음 화면에 나타날 때(마운트) 한 번만 실행
+주로:
+첫 페이지 로드 시 API 데이터 불러오기
+초기 설정(초기 콘솔로그, 이벤트 등록 등)에 사용
+------------------------------------------------------------------
+특정 값이 들어간 배열 [count]
+useEffect(() => {
+  console.log("count가 바뀔 때만 실행!", count);
+}, [count]);
+count 값이 바뀔 때만 실행돼
+“이 값이 변할 때만 할 작업”을 적는 거야
+검색어가 바뀔 때마다 API 요청
+로그인 상태가 바뀔 때마다 화면 업데이트 등
+------------------------------------------------------------------
+3. 컴포넌트 생명주기와 useEffect
+
+옛날 클래스 컴포넌트 기준으로 설명하면:
+
+componentDidMount → 처음 마운트 시: useEffect(..., [])
+
+componentDidUpdate → 업데이트 시: useEffect(..., [state])
+
+componentWillUnmount → 사라지기 직전: cleanup 함수
+
+cleanup은 이렇게:
+
+useEffect(() => {
+  console.log("마운트 또는 업데이트 시");
+  
+  return () => {
+    console.log("언마운트 시 또는 다음 effect 실행 직전");
+  };
+}, []);
+
+
+return () => { ... } 안에 있는 게 정리(cleanup) 코드야
+
+setInterval 중지
+
+이벤트 리스너 제거
+
+타이머 정리 등
+
+# 비동기 함수 사용방법
+⭐ await는 “약속(Promise) 완료될 때까지 잠깐 기다려”
+⭐ async는 “이 함수 안에서는 await 쓸 수 있어”
+👉 fetch = 서버에 요청 보내서 데이터를 가져오거나 보낼 때 사용하는 웹 API 함수.
+🟥 1. fetch는 어디에 있는 함수인가?
+브라우저가 기본 제공하는 내장 함수(Web API)
+Node.js도 fetch 지원
+React는 브라우저 위에서 동작하니까 결국 fetch 사용 가능
+즉, 설치할 필요 없음 → 바로 사용 가능
+const res = await fetch("https://jsonplaceholder.typicode.com/users");
+const data = await res.json();
+
+
+# http 메서드
+메서드	        역할 (한 줄 요약)
+GET	            데이터 가져오기
+POST	          데이터 생성(보내기)
+PUT	            데이터 전체 수정
+DELETE	        데이터 삭제
+
+---- 중요
+마운트는 컴포넌트가 처음에 dom에 등장하는 순간.. (올린다는 개념)
+랜더링은 그 올려놓은 컴포넌트가 바뀌는거..

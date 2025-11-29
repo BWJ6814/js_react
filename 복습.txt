@@ -1,0 +1,43 @@
+지금 까지 공부한 내용중 헷갈리는 부분있으면  복습하기 위해 작성한 리스트들 입니다
+
+# jsx란? 
+- js 파일 안에서 html처럼 쓰게 해주는 문법
+
+# 중괄호{}
+jsx안에서 js 값을 넣고 싶을 때 사용
+
+# 반복 렌더링 
+- map() 자주 사용 
+items.map(item => <li>{item}</li>)
+
+# map()
+배열을 반복하면서 각 요소를 꺼냄 그리고 콜백함수가 return한 값들로
+이루어진 새 배열을 반환
+const products = [
+  { id: 1, name: "사과" },
+  { id: 2, name: "바나나" }
+];
+const result = products.map((item) => {
+  return item.name;
+});
+결과값 ["사과", "바나나"]
+
+# 조건부 렌더링
+isLogin ? <p>환영합니다</p> : <p>로그인해주세요</p>
+
+# 스타일 적용 
+<div style={{ color: "red", fontSize: 20 }}></div>
+jsx에서는 style이 객체 형태!.
+
+# props 전달
+<Hello name="운조" />
+function Hello({ name }) { ... }
+
+# useState 
+동적 UI를 만들기 위함
+setState는 비동기
+바로 값이 바뀌지 않고, React가 렌더링 하는 순간 반영됨
+setCount(prev=>prev+1)
+
+# input 상태관리
+<input value={text} onChange={e => setText(e.target.value)} />

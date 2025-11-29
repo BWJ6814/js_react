@@ -1,0 +1,68 @@
+리액트 기본개념 & 개발환경구축
+
+1. React란 무엇인가?
+- React는 UI를 만들기 위한 JS 라이브러리
+- 웹 어플리케이션의 화면을 업데이트할 때 변경된 부분만 효율적으로 다시 렌더링해줌 -> 가볍고 빠름
+- Meta에서 만들었음
+
+2. 왜 React가 필요한가?
+일단 html, css, js로 웹 페이지를 만들면 페이지가 바뀔 때마다 서버에서 새로운 html을 계속 받아와야함.
+문제는 뭐냐 -> 깜빡임, 느린화면 업데이트, 복잡한 DOM 조작
+-> React는 화면 일부만 변경해서 빠르고 부드러운 UI경험을 제공함
+
+3. SPA란? (Single Page Application)
+이 개념은 React를 이해하는 핵심
+
+기존방식(MPA, Multi Page App)
+- 메뉴 클릭 -> 페이지 전체 새로 로딩
+- 서버에서 html 받아옴
+
+SPA방식
+- 첫 로딩만 서버에서 가져옴
+- 그 뒤엔 자바스크립트로 필요한 화면만 바뀜
+- 새로고침 없음
+대표 예: GMAIL , META, INSTAGRAM
+
+@@@@@@@@@@@ 즉 React = SPA개발에 최적화된 라이브러리
+
+
+4. REACT 동작 원리 간단개념
+React는 Component(컴포넌트) 기반
+컴포넌트란? -> 화면을 구성하는 작은 조각 ex) 버튼하나 헤더 푸터 카드UI 등등
+
+5. JSX
+React에서 HTML처럼 보이는 문법을 JS안에서 작성하는데 이걸 JSX라고함
+JSX는 나중에 Babel 이라는 도구가 JS코드로 변환해줌
+ex) function App(){
+    return <h1>Hello React!</h1>;
+}
+
+6. NODE.JS & NPM 이해
+- NODE.JS : js를 브라우저말고 컴퓨터에서 실행하는 엔진
+- NPM : Node Package Manager -> 외부 라이브러리 설치용
+
+7. 개발 규칙 개발할때마다 터미널 켜서 
+npm run dev 실행
+-> 로컬 서버 실행 (파일 수정하면 자동으로 브라우저에 반영)
+
+구분	설명
+수정    파일	src/App.jsx
+실행    명령어	npm run dev
+확인    주소	http://localhost:5173/
+실행    원리	Vite 개발 서버가 JSX → JS로 변환 후 브라우저에 표시
+
+index.html react가 연결되는 기본 html
+main.jsx react 앱을 html에 연결해주는 파일
+app.jsx 우리가 만드는 첫 컴포넌트
+react에서 컴포넌트는 함수처럼 생겼고 반드시 리턴 값으로 jsx ui를 반환함
+function App() {
+  return <h1>Hello!</h1>;
+}
+export default App; ← 다른 파일에서 사용할 수 있게 해줌.
+
+
+JSX의 중요한 규칙
+"JSX는 반드시 하나의 부모 요소로 감싸야한다."
+REACT 컴포넌트에서 RETURN할때
+HTML처럼 여러 태그를 나란히 적을수 없고
+하나의 부모 태그안에 묶여있어야해

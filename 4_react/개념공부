@@ -1,0 +1,9 @@
+1. React 이벤트 간단한 예제
+<button onclick="doSomething()">클릭</button>
+2. html에서는 저렇게 쓰지만 jsx 에서는 카멜케이스로 쓰고 함수를 값으로 넘긴다는 느낌
+<button onClick={handleClick}>클릭</button>
+3. 이 버튼을 클릭하면 handleClick 함수를 실행해줘 느낌
+4. 만약에 handleClick() 이걸 넣었으면 실행한 결과를 넘기는거임..
+5. 폼에서는 주로 이 이벤트들을 많이씀
+- onChange : input 내용이 바뀔 때마다
+- onSubmit : form 제출될 때 (엔터 / 버튼)

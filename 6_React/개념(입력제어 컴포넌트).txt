@@ -1,0 +1,20 @@
+# 입력제어 컴포넌트란?
+입력값의 실제 주인 -> 브라우저가 아니라 React state
+<input>의 value를 항상 state에서 가져오고, 사용자가 타이핑하면 onChange에서 state를 바꿈
+흐름
+사용자 타이핑 → onChange 이벤트 → setState로 값 업데이트 →
+리렌더링 → input의 value에 새 state가 들어감
+
+React가 input을 제어한다고 해서 제어 컴포넌트라고 부름
+
+input에서 submit 발생시 브라우저가 페이지 새로고침 + 서버전송하려고함
+React에서는 spa라서 페이지 새로고침을 막아야함
+const handleSubmit = (e) => {
+  e.preventDefault(); // 기본 제출(새로고침) 막기
+  // 여기서 우리가 원하는 로직 수행
+};
+----------------------------------------------------------------
+
+# 여러 input 한 번에 관리하기 패턴
+폼이 커지면 input이 3개,5개,10개씩 늘어남
+이걸 전부 useState 따로 쓰면 헷갈려서 보통 객체 하나로 묶어서 관리..
